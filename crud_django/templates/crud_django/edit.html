@@ -1,0 +1,24 @@
+{% extends 'crud_django/base.html' %}
+{% block body %}
+
+<div class="col-md-6 offset-2">
+    <h4 class="alert alert-info">Update Book Information</h4>
+    <form method="POST" action="update/{{ books.id }}">
+        {% csrf_token %}
+        <div class="form-group">
+            <label for="Title">Title</label>
+            <input type="text" name="Title" class="form-control" value="{{ books.Title }}" required="required"/>
+        </div>
+        <div class="form-group">
+            <label for="Author">Author</label>
+            <input type="text" name="Author" class="form-control" value="{{ books.Author }}" required="required"/>
+        </div>
+        <div class="form-group">
+            <label for="Subject">Subject</label>
+            <input type="text" name="Subject" class="form-control" value="{{ books.Subject }}" required="required"/>
+        </div>
+        <div class="form-group">
+            <button type="submit" class="btn btn-sm btn-warning"><span class="glyphicon glyphicon-edit"></span> Update</button>
+        </div>
+    </form></div>
+{% endblock %}

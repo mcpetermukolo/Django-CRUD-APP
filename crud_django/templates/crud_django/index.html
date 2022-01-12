@@ -1,0 +1,49 @@
+{% extends 'crud_django/base.html' %}
+{% block body %}
+    <div class="row">
+    <div class="col-md-6">
+         <h4 class="text-center alert alert-info">Add New Book</h4>
+<form   action="create" method="POST">
+    {% csrf_token %}
+    <div class="form-group">
+        <label for="Title">Title</label>
+        <input type="text" name="Title" class="form-control" style="width:80%;" required="required"/>
+        </div>
+         <div class="form-group">
+        <label for="Author">Author</label>
+        <input type="text" name="Author" class="form-control" style="width:80%;" required="required"/>
+        </div>
+        <div class="form-group">
+        <label for="Author">Subject</label>
+        <input type="text" name="Subject" class="form-control" style="width:80%;" required="required"/>
+        </div>
+         <div class="form-group">
+        <button type="submit" class="btn btn-sm btn-success"><span class="glyphicon glyphicon-plus"></span> ADD</button>
+    </div>
+</form>
+    </div>
+    <div class="col-md-6">
+ <h4 class="text-center alert alert-info">Book Information</h4>
+<table class="table table-bordered">
+    <thead class="alert-info">
+        <tr>
+            <th>ID</th>
+            <th>Title</th>
+            <th>Author</th>
+            <th>Subject</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for book in books %}
+        <tr>
+            <td>{{ book.id }}</td>
+            <td>{{ book.Title }}</td>
+            <td>{{ book.Author }}</td>
+            <td>{{ book.Subject }}</td>
+            <td><center><a class="btn btn-sm btn-warning" href="edit/{{ book.id }}"><span class="glyphicon glyphicon-edit"></span> Edit</a> <a class="btn btn-sm btn-danger" href="delete/{{ book.id }}"><span class="glyphicon glyphicon-trash"></span> Delete</a></center></td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table></div></div>
+{% endblock %}
